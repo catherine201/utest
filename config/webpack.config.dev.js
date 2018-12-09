@@ -132,6 +132,18 @@ module.exports = {
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
+    //设置开发者工具的端口号,不设置则默认为8080端口
+  devServer: {
+    proxy: {
+        '/api': {
+            target: 'http://localhost:3333',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/api': ''
+            }
+        }
+    }
+  },
   optimization: {
     // Automatically split vendor and commons
     // https://twitter.com/wSokra/status/969633336732905474

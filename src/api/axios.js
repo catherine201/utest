@@ -113,12 +113,14 @@ function fetchApi(param, options) {
   return new Promise((resolve, reject) => {
     axios(param)
       .then(response => {
+        console.log(response);
         if (options.errorHandler) {
           switch (response.data.code) {
             case 0:
-              if (response.data.msg !== '查询成功') {
-                message.success(response.data.msg);
-              }
+              message.success(response.data.msg);
+              // if (response.data.msg === '查询成功') {
+              //   message.success(response.data.msg);
+              // }
               return resolve(response.data);
             default:
               message.error(response.data.msg);

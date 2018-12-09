@@ -3,7 +3,7 @@ import createApi from '../../api/demo/index';
 const test = {
   state: {
     countLoadingArr: [],
-    test: 1,
+    test: '',
     num: 1,
     type: 2
   },
@@ -36,6 +36,7 @@ const test = {
       if (res && res.success) {
         console.log(res);
         console.log(dispatch);
+        dispatch.demo.setTest(res.data[1][0].title);
       }
     }
   })

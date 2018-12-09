@@ -4,7 +4,7 @@ const config = {
   // 明细预览
   test: {
     // 报表撤回
-    url: '/indicator/pdfDetailReport',
+    url: '/game/data',
     method: 'get',
     options: {
       errorHandler: true,

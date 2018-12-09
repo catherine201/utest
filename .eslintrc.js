@@ -49,7 +49,9 @@ module.exports = {
     "prefer-destructuring": 0,
     "import/prefer-default-export": 0,
     "no-param-reassign": 0,
-    "import/named": 0
+    "import/named": 0,
+    'import/no-extraneous-dependencies': 0,
+    'no-unused-expressions': 0
   },
   "plugins": [
     "react",

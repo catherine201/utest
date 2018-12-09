@@ -20,7 +20,7 @@ function Test(props) {
 /* eslint-enable */
 
 Test.propTypes = {
-  test: PropTypes.number.isRequired
+  test: PropTypes.string.isRequired
 };
 const mapStateToProps = state => ({
   test: state.demo.test

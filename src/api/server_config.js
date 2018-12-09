@@ -1,8 +1,8 @@
 function resolveIp() {
   const mode = process.env.NODE_ENV.trim();
   if (mode === 'development') {
-    return '';
+    return 'http://localhost:3333';
   }
-  return 'http://0.0.0.0';
+  return 'http://localhost:3333';
 }
 export const serverIpAddress = resolveIp();
