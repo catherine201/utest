@@ -1,23 +1,296 @@
 
 @import "./iconfont.css";
-body {
+@import "./animate.css";
+/* 头部进步条的样式 */
+#nprogress .bar {
+  background: #812CB2 ;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #812CB2 ;
+  border-left-color: #812CB2 ;
+}
+  body{
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background: #ECF0F5;
+    color: #464c5b;
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+    background: #ECF0F5;
+  }
+  .f-left{
+    float: left;
+  }
+  .f-right{
+    float: right;
+  }
+  .text-center{
+    text-align: center;
+  }
+  .blur-0{
+    filter: blur(0px);
+  }
+  .blur-1{
+    filter: blur(1px);
+  }
+  .blur-2{
+    filter: blur(2px);
+  }
+  .blur-4{
+    filter: blur(4px);
+  }
+  .blur-7{
+    filter: blur(7px);
+  }
+  .m-box{
+    background: #fff;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  .m-box:last-child{
+    margin-bottom: 0px;
+  }
+  .form-control{
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 1.42857143;
+    height: 36px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #c5c7ce;
+    border-radius: 4px;
+    vertical-align: middle;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 0 rgba(44,147,250,.18);
+    transition: border,box-shadow .5s ease;
+  }
+  .form-control:active{
+    border-color: #29a0f2;
   }
   
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
+  .form-control:focus{
+    border-color: #29A0F2;
   }
-  :global(.ant-form.login-form){
-      width: 355px;
-      margin: auto;
+  .form-control.danger{
+    border-color: #f56c6c;
   }
-  body{
-    color: red
+  #root .app-layout{
+    min-height: calc(100vh);
   }
+  .app-layout .ant-layout-sider-dark{
+    background: #1F2729;
+  }
+  .app-layout .ant-menu-dark, 
+  .app-layout .ant-menu-dark .ant-menu-sub{
+    background: #1F2729;
+  }
+  .app-layout .ant-menu-horizontal{
+    border: none;
+  }
+  .app-layout .ant-layout-header{
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+  }
+  .app-layout .ant-layout-header .ant-menu{
+    line-height: 50px;
+    background: #29ABE2;
+  }
+  .app-layout .ant-layout-header .ant-menu-item, 
+  .app-layout .ant-layout-header .ant-menu-submenu-title{
+    padding: 0 15px;
+  }
+  .app-layout .ant-layout-header .ant-menu.ant-menu-dark .ant-menu-item-selected,
+  .app-layout .ant-layout-header .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
+    background: rgba(12, 12, 12, 0.18);
+  }
+  .app-layout .ant-layout-header .trigger {
+    font-size: 18px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: #E8E8ED;
+  }
+  .ant-menu-dark .ant-menu-item,
+  .ant-menu-dark .ant-menu-item-group-title,
+  .ant-menu-dark .ant-menu-item > a{
+    color: rgba(255, 255, 255, 0.75);
+  }
+  
+  .app-layout .ant-layout-header .trigger:hover {
+    color: #fff;
+  }
+  
+  .app-layout .ant-layout-sider .logo-box {
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    color: #e6e5e5;
+    overflow: hidden;
+    transition: padding 0.2s ease;
+  }
+  .app-layout .ant-layout-sider.ant-layout-sider-collapsed .logo-box{
+    padding: 0 23px;
+  }
+  .app-layout .ant-layout-sider.ant-layout-sider-collapsed .logo-box .title{
+    display: none;
+  }
+  .logo-box .logo{
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+  }
+  .logo-box .title{
+    font-size: 1.2rem;
+    font-weight: 100;
+  }
+  
+  .app-layout .ant-layout-content{
+    padding: 0px;
+    margin: 0 16px;
+  }
+  
+  .app-layout .ant-layout-footer{
+    border-top: 1px solid rgba(48,54,62,.14);
+    background: #fff;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    padding: 0 16px;
+    color: #94989e;
+  }
+  
+  .head-nav-list{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .head-nav-list li{
+    display: inline-block;
+    padding: 0 5px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .head-nav-list li > a{
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
+  }
+  .head-nav-list li > a:hover{
+    color: #fff;
+  }
+  .head-nav-list li .anticon {
+    margin-right: 5px;
+    font-size: 1rem;
+  }
+  .head-nav-list li .user-avator{
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+    border-radius: 3px;
+  }
+  
+  .btn-block{
+    display: block;
+    width: 100%;
+  }
+  
+  .btn-block.btn-lg{
+    min-width: 200px;
+    height: 42px;
+    line-height: 42px;
+  }
+  
+  .middle-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(236,240,245);
+  }
+  .login-form{
+    width: 280px;
+    box-shadow: 0 0 7px rgba(2, 2, 2, 0.12);
+    border-radius: 5px;
+    z-index: 1000;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+  }
+  .login-form .logo{
+    margin-bottom: 15px;
+  }
+  
+  .login-page,
+  .login-form-wallpaper{
+    background-size: cover;
+  }
+  .login-form-wallpaper{
+    filter: blur(16px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .fade-enter {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  
+  /*设置进场过程中 透明度为1，防缩为1，放缩的位置为左上角，持续时间为500ms，时间曲是ease-out */
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top left;
+    transition: 800ms ease-out;
+  }
+  
+  /*设置退场前透明度为1，防缩为1*/
+  .fade-exit{
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /*设置退场过程中 透明度为0，防缩为0，放缩的位置默认是中间，所以不设置也可以，
+  持续时间为500ms，时间曲是ease-out */
+  .fade-exit.fade-exit-active{
+    opacity:0;
+    transform: scale(0);
+    transition: 800ms ease-out;
+  }
+  
+  .message-enter {
+    opacity: 0.01;
+    transform: scale(0.9) translateY(50%);
+  }
+  .message-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0%);
+    transition: all 300ms ease-out;
+  }
+  .message-exit {
+    opacity: 1;
+    transform: scale(1) translateY(0%);
+  }
+  .message-exit-active {
+    opacity: 0.01;
+    transform: scale(0.9) translateY(50%);
+    transition: all 300ms ease-out;
+  }
+  

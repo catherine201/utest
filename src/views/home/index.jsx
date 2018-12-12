@@ -1,33 +1,35 @@
-// import React from 'react';
+import React from 'react';
+import { Button } from 'antd';
 
-// const Home = () => <h2>home</h2>;
+const imgSrc = require('../../assets/images/logo.png');
 
-// export default Home;
-import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import { Switch } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-// import { Button } from 'antd';
-// import { FrontendAuth } from '../../components/frontend-auth.component';
-import routes from './route';
-// @CSSModules(styles)
+export default class Home extends React.Component {
+  toAdmin() {
+    console.log(this);
+    this.props.history.push('/admin');
+  }
 
-class Home extends Component {
   render() {
     return (
-      <div>
-        home6666
-        {/* {this.props.children} */}
-        <Switch>
-          {renderRoutes(routes)}
-          {/* <FrontendAuth config={routes} /> */}
-        </Switch>
+      <div className="middle-box">
+        {/* <div className="m-box"></div> */}
+        <div>
+          <img src={imgSrc} alt="logo" />
+        </div>
+        <div style={{ margin: '10px 0' }}>
+          <h1>Euen 后台管理系统</h1>
+        </div>
+        <div>
+          <Button
+            className="btn-block btn-lg"
+            onClick={() => {
+              this.toAdmin();
+            }}
+          >
+            进入系统...
+          </Button>
+        </div>
       </div>
     );
   }
 }
-// Home.propTypes = {
-//   children: PropTypes.any.isRequired
-// };
-
-export default Home;

@@ -1,48 +1,55 @@
-import asyncComponent from '../components/asyncComponent';
+import React from 'react';
+import Loadable from 'react-loadable';
+import Router from 'react-concise-router';
+// import Home from '../views/home';
+// import Login from '../views/login';
 // import Demo from '../views/demo';
+// import NotMatch from '../views/404';
+import AppLayout from '../components/AppLayout';
+import store from '../store';
+// const Home = () => import('../views/home');
+// const Login = () => import('../views/login');
+// const Demo = () => import('../views/demo');
+// const NotMatch = () => import('../views/404');
+// const AppLayout = () => import('../components/AppLayout');
+const Loading = () => <div>Loading...</div>;
 
-const Home = asyncComponent(() => import('../views/home'));
-// const Game = asyncComponent(() => import('../views/game'));
-// const Demo = asyncComponent(() => import('../views/demo'));
-const Login = asyncComponent(() => import('../views/login'));
-const NotFind = asyncComponent(() => import('../views/404'));
+const page = name =>
+  Loadable({
+    loader: () => import(`../views/${name}`),
+    loading: Loading
+  });
 
-const routes = [
-  {
-    path: '/',
-    // exact: true,
-    component: Home,
-    auth: true
-  },
-  {
-    path: '/home',
-    component: Home,
-    auth: true
-  },
-  // {
-  //   path: '/game',
-  //   component: Game,
-  //   auth: true
-  // },
-  // {
-  //   path: '/demo',
-  //   component: Demo,
-  //   auth: true
-  // },
-  {
-    path: '/login',
-    component: Login
-  },
-  {
-    path: '/404',
-    component: NotFind
-  },
-  {
-    path: '*',
-    component: Home,
-    auth: true
-  }
-];
+const router = new Router({
+  mode: 'hash',
+  routes: [
+    { path: '/', component: page('home') },
+    { path: '/demo', component: page('demo') },
+    { path: '/login', component: page('login') },
+    // { path: '/user/:userId', component: UserInfo },
+    {
+      path: '/admin',
+      component: AppLayout,
+      name: 'admin-view',
+      children: [
+        { path: '/', component: page('demo') },
+        { path: '/demo', component: page('demo') },
+        {
+          path: '/game',
+          name: 'game-view',
+          component: page('game'),
+          children: [{ path: '/ga', component: page('demo') }]
+        },
+        // { path: '/redux-demo', component: page('ReduxDemo') },
+        // { path: '/model', component: page('Model') },
+        // { path: '/components/button', component: page('components/button') },
+        // { path: '/components/tabs', component: page('components/tabs') },
+        { name: 404, component: page('404') }
+      ]
+    },
+    { name: 404, component: page('404') }
+  ]
+});
 
 // const modulesContext = require.context('../views/', true, /route\.js$/);
 // modulesContext.keys().forEach(element => {
@@ -51,5 +58,15 @@ const routes = [
 //   routes.push(...modulesContext(element).default);
 // });
 
-// console.log(routes);
-export { routes };
+router.beforeEach = function(ctx, next) {
+  console.log(ctx);
+  console.log('luyoubianh ');
+  NProgress.start();
+  store.dispatch.demo.setCountLoading([]);
+  next();
+  // next();
+  setTimeout(() => {
+    NProgress.done();
+  }, 300);
+};
+export default router;

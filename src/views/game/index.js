@@ -5,14 +5,15 @@
 // export default Game;
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CSSModules from 'react-css-modules';
+// import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
-import styles from '../../test.less';
+import '../../test.less';
+// import router from '../../routes';
 // import Test from './test';
 
 class Game extends Component {
   static propTypes = {
-    test: PropTypes.number.isRequired,
+    test: PropTypes.any.isRequired,
     getTest: PropTypes.func.isRequired
   };
 
@@ -33,9 +34,11 @@ class Game extends Component {
         {/* <Test onClick={() => getTest()} loading={loading.toString}>
           Test3
         </Test> */}
+
         <p onClick={() => getTest()}>setTest</p>
         <p>{hidden}</p>
         <p>{selectedTab}</p>
+        {/* <router.view /> */}
       </div>
     );
   }
@@ -52,4 +55,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CSSModules(Game, styles));
+)(Game);

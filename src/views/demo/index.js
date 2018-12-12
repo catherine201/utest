@@ -1,15 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CSSModules from 'react-css-modules';
+// import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
 import { Icon } from 'antd';
-import styles from '../../test.less';
+// import styles from '../../test.less';
+import '../../test.less';
 
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_570381_jsx2qmhaxtg.js'
+});
 /* eslint-disable */
 function Test(props) {
   const { test } = props;
   return (
     <div>
+      <IconFont type="icon-icon15" />
       <p>useStateObject api</p>
       <Icon type="loading" />
       <i className="iconfont hd-icon-index-delete"></i>
@@ -30,7 +35,11 @@ const mapDispatchToProps = dispatch => ({
   setTest: dispatch.demo.setTest
 });
 
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(CSSModules(Test, styles));
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CSSModules(Test, styles));
+)(Test);

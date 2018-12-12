@@ -21,6 +21,9 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const CompressionPlugin = require("compression-webpack-plugin");
+const WebpackMonitor = require("webpack-monitor");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -153,6 +156,11 @@ module.exports = {
       .relative(paths.appSrc, info.absoluteResourcePath)
       .replace(/\\/g, '/'),
   },
+  externals: {
+    NProgress: 'NProgress',
+    react: "React",
+    "react-dom": "ReactDOM"
+  },
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -284,7 +292,6 @@ module.exports = {
           options: {
             formatter: require.resolve('react-dev-utils/eslintFormatter'),
             eslintPath: require.resolve('eslint'),
-
           },
           loader: require.resolve('eslint-loader'),
         }, ],
@@ -318,6 +325,7 @@ module.exports = {
               ),
 
               plugins: [
+                // ['import', { libraryName: 'antd', style: 'css' }],
                 [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
@@ -494,6 +502,37 @@ module.exports = {
         minifyURLs: true,
       },
     }),
+    new webpack.optimize.AggressiveSplittingPlugin({
+      minSize: 512000, // 字节，分割点。默认：30720
+      maxSize: 1024000, // 字节，每个文件最大字节。默认：51200
+      chunkOverhead: 0, // 默认：0
+      entryChunkMultiplicator: 1, // 默认：1
+    }),
+    new WebpackMonitor({
+      capture: true, // -> default 'true'
+      // target: '../monitor/myStatsStore.json', // default -> '../monitor/stats.json'
+      launch: true, // -> default 'false'
+      port: 3030, // default -> 8081
+      excludeSourceMaps: true // default 'true'
+    }),
+    new UglifyJSPlugin(),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false,
+    //     // Disabled because of an issue with Uglify breaking seemingly valid code:
+    //     // https://github.com/facebookincubator/create-react-app/issues/2376
+    //     // Pending further investigation:
+    //     // https://github.com/mishoo/UglifyJS2/issues/2011
+    //     comparisons: false
+    //   },
+    //   output: {
+    //     comments: false,
+    //     // Turned on because emoji and regex is not minified properly using default
+    //     // https://github.com/facebookincubator/create-react-app/issues/2488
+    //     ascii_only: true
+    //   },
+    //   sourceMap: false
+    // }),
     // Inlines the webpack runtime script. This script is too small to warrant
     // a network request.
     shouldInlineRuntimeChunk &&
@@ -531,6 +570,15 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // 开启gzip压缩
+    new CompressionPlugin({
+      // asset: "[path].gz[query]",
+      filename: '[path].gz[query]',
+      algorithm: "gzip",
+      test: /\.(js|html|css|jsx)$/,
+      threshold: 10240,
+      minRatio: 0.8
+    }),
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
     new WorkboxWebpackPlugin.GenerateSW({

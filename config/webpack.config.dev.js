@@ -17,6 +17,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -132,6 +133,11 @@ module.exports = {
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
+  externals: {
+    NProgress: 'NProgress',
+    react: "React",
+    "react-dom": "ReactDOM"
+  },
     //设置开发者工具的端口号,不设置则默认为8080端口
   devServer: {
     proxy: {
@@ -215,10 +221,25 @@ module.exports = {
         test: /\.(js|mjs|jsx)$/,
         enforce: 'pre',
         use: [{
+          // loader: require.resolve('babel-loader'),
           options: {
             formatter: require.resolve('react-dev-utils/eslintFormatter'),
             eslintPath: require.resolve('eslint'),
-
+          //   plugins: [
+          //     [
+          //       'import',
+          //       [
+          //       {
+          //         libraryName: "antd",
+          //         style: true
+          //       }
+          //     ]
+          //   ],
+          // ],
+          cacheDirectory: true,
+          // Save disk space when time isn't as important
+          cacheCompression: true,
+          compact: true,
           },
           loader: require.resolve('eslint-loader'),
         }, ],
@@ -252,6 +273,7 @@ module.exports = {
               ),
 
               plugins: [
+                // ['import', { libraryName: 'antd', style: 'css' }],
                 [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
@@ -289,6 +311,17 @@ module.exports = {
                   },
                 ],
               ],
+                        //   plugins: [
+          //     [
+          //       'import',
+          //       [
+          //       {
+          //         libraryName: "antd",
+          //         style: true
+          //       }
+          //     ]
+          //   ],
+          // ],
               cacheDirectory: true,
               // Don't waste time on Gzipping the cache
               cacheCompression: false,
@@ -404,6 +437,8 @@ module.exports = {
       inject: true,
       template: paths.appHtml,
     }),
+
+    // new UglifyJSPlugin(),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">

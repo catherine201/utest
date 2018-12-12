@@ -51,7 +51,12 @@ module.exports = {
     "no-param-reassign": 0,
     "import/named": 0,
     'import/no-extraneous-dependencies': 0,
-    'no-unused-expressions': 0
+    'no-unused-expressions': 0,
+    'react/no-access-state-in-setstate': 0,
+    'react/prop-types': 0,
+    'react/jsx-wrap-multilines': 0,
+    'func-names': 0,
+    'no-undef': 0
   },
   "plugins": [
     "react",
