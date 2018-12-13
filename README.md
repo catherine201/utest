@@ -1,4 +1,4 @@
-# React-node | [中文](/README_CN.md)
+# React-node
 
 [![travis-ci](https://travis-ci.org/catherine201/final-node.svg?branch=master)](https://travis-ci.org/catherine201/final-node)
 [![codecov](https://codecov.io/gh/catherine201/final-node/branch/master/graph/badge.svg)](https://codecov.io/gh/catherine201/final-node)
