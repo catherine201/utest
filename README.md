@@ -1,7 +1,7 @@
-# React-2048-game | [中文](/README_CN.md)
+# React-node | [中文](/README_CN.md)
 
-[![travis-ci](https://travis-ci.org/devrsi0n/React-2048-game.svg?branch=master)](https://travis-ci.org/devrsi0n/React-2048-game)
-[![codecov](https://codecov.io/gh/devrsi0n/React-2048-game/branch/master/graph/badge.svg)](https://codecov.io/gh/devrsi0n/React-2048-game)
+[![travis-ci](https://travis-ci.org/catherine201/final-node.svg?branch=master)](https://travis-ci.org/catherine201/final-node)
+[![codecov](https://codecov.io/gh/catherine201/final-node/branch/master/graph/badge.svg)](https://codecov.io/gh/catherine201/final-node)
 [![node](https://img.shields.io/badge/node-%20%3E%3D%206.10-brightgreen.svg)](https://nodejs.org)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
