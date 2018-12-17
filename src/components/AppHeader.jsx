@@ -10,6 +10,11 @@ export default class AppHeader extends React.Component {
     fullscreen: false
   };
 
+  toHref = addr => {
+    console.log(this);
+    this.props.history.push(addr);
+  };
+
   fullscreenTrigger() {
     if (this.state.fullscreen) {
       exitFullscreen();
@@ -22,14 +27,15 @@ export default class AppHeader extends React.Component {
   }
 
   doLogout() {
+    console.log(this);
     this.$modal.confirm({
       title: '你确定退出么？',
       content: '',
       okText: '确定',
       cancelText: '再看一会',
       onOk: () => {
-        localStorage.removeItem('user');
-        window.location.href = '/login';
+        sessionStorage.removeItem('user');
+        this.props.history.push('/login');
       }
     });
   }
@@ -37,18 +43,35 @@ export default class AppHeader extends React.Component {
   dropdownMenu() {
     return (
       <Menu>
-        <Menu.Item key="0">
+        <Menu.Item key="0" onClick={() => this.toHref('/personalCenter/')}>
           <Icon type="user" style={{ marginRight: '5px' }} />
-          Info
+          个人信息
         </Menu.Item>
-        <Menu.Item key="1" onClick={() => this.$msg.loading('系统繁忙...', 3)}>
-          <Icon type="setting" style={{ marginRight: '5px' }} />
-          Setting
+        <Menu.Item
+          key="1"
+          onClick={() => this.toHref('/personalCenter/changePassword')}
+        >
+          <Icon type="sync" style={{ marginRight: '5px' }} />
+          密码变更
+        </Menu.Item>
+        <Menu.Item
+          key="2"
+          onClick={() => this.toHref('/personalCenter/binding')}
+        >
+          <Icon type="link" style={{ marginRight: '5px' }} />
+          账号绑定
+        </Menu.Item>
+        <Menu.Item
+          key="3"
+          onClick={() => this.toHref('/personalCenter/safetyCheck')}
+        >
+          <Icon type="check-circle" style={{ marginRight: '5px' }} />
+          安全验证
         </Menu.Item>
         <Menu.Divider />
-        <Menu.Item key="3" onClick={() => this.doLogout()}>
+        <Menu.Item key="4" onClick={() => this.doLogout()}>
           <Icon type="logout" style={{ marginRight: '5px' }} />
-          Logout
+          退出
         </Menu.Item>
       </Menu>
     );
@@ -57,18 +80,28 @@ export default class AppHeader extends React.Component {
   dropdownSetting() {
     return (
       <Menu>
-        <Menu.Item key="0">
+        <Menu.Item key="0" onClick={() => this.toHref('/personalCenter/')}>
           <Icon type="user" style={{ marginRight: '5px' }} />
-          Info
+          个人信息
         </Menu.Item>
-        <Menu.Item key="1">
-          <Icon type="setting" style={{ marginRight: '5px' }} />
-          Setting
+        <Menu.Item
+          key="1"
+          onClick={() => this.toHref('/personalCenter/changePassword')}
+        >
+          <Icon type="sync" style={{ marginRight: '5px' }} />
+          密码变更
+        </Menu.Item>
+        <Menu.Item
+          key="2"
+          onClick={() => this.toHref('/personalCenter/binding')}
+        >
+          <Icon type="link" style={{ marginRight: '5px' }} />
+          账号绑定
         </Menu.Item>
         <Menu.Divider />
-        <Menu.Item key="3">
+        <Menu.Item key="3" onClick={() => this.doLogout()}>
           <Icon type="logout" style={{ marginRight: '5px' }} />
-          Logout
+          退出
         </Menu.Item>
       </Menu>
     );
@@ -126,7 +159,7 @@ export default class AppHeader extends React.Component {
             <Menu.Item key="1">
               <Link to="/">Home</Link>
             </Menu.Item>
-            <Menu.Item key="8">
+            {/* <Menu.Item key="8">
               <a
                 href="https://ant.design/docs/react/introduce-cn"
                 target="_blank"
@@ -155,7 +188,7 @@ export default class AppHeader extends React.Component {
                 <Icon type="ant-design" style={{ marginRight: '5px' }} /> Design
                 Pro
               </a>
-            </Menu.Item>
+            </Menu.Item> */}
           </Menu>
         </div>
       </Header>

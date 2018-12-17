@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import './home.less';
 
 const imgSrc = require('../../assets/images/logo.png');
 

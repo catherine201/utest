@@ -15,7 +15,7 @@ function Test(props) {
   return (
     <div>
       <IconFont type="icon-icon15" />
-      <p>useStateObject api</p>
+      <p>欢迎您</p>
       <Icon type="loading" />
       <i className="iconfont hd-icon-index-delete"></i>
       <p>{test}</p>

@@ -84,11 +84,6 @@
     "server": "nodemon server.js",
     "build": "node scripts/build.js",
     "pm": "pm2 start server.js",
-    "analyze": "cross-env ANALYZE=true npm run build",
-    "test": "node scripts/test.js",
-    "ci": "cross-env CI=true npm run test",
-    "codecov": "codecov",
-    "deploy": "sh ./scripts/deploy.sh",
     "format": "onchange 'src/**/*.js' 'src/**/*.jsx' 'src/**/*.scss' -- prettier --write {{changed}}"
   },
   "eslintConfig": {

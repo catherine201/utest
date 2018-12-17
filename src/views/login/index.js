@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, Input, Icon, Checkbox } from 'antd';
 import PropTypes from 'prop-types';
+import styles from './login.less';
 
 const srcImg = require('../../assets/images/logo.png');
 
@@ -27,7 +28,7 @@ class Login extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        localStorage.setItem('user', JSON.stringify(values));
+        sessionStorage.setItem('user', JSON.stringify(values));
         this.setState({
           isLoding: true
         });
@@ -44,12 +45,17 @@ class Login extends React.Component {
     });
   };
 
+  toRegister = e => {
+    e.preventDefault();
+    this.props.history.push('/register');
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="middle-box login-page">
         <div
-          className={`m-box login-form${
+          className={`m-box ${styles['login-form']} ${
             this.state.isLoding ? ' blur-2' : ' blur-0'
           }`}
         >
@@ -60,7 +66,7 @@ class Login extends React.Component {
               width="100"
               height="100"
               alt="logo"
-              className="logo"
+              className={styles.logo}
             />
           </div>
           <h1
@@ -117,6 +123,10 @@ class Login extends React.Component {
               >
                 Log in
               </Button>
+              Or
+              <a href="#" onClick={this.toRegister}>
+                没有账号？点击注册
+              </a>
             </Form.Item>
           </Form>
 

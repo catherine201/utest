@@ -56,7 +56,9 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-wrap-multilines': 0,
     'func-names': 0,
-    'no-undef': 0
+    'no-undef': 0,
+    'react/react-in-jsx-scope': 0,
+    'jsx-a11y/anchor-is-valid': 0
   },
   "plugins": [
     "react",

@@ -26,7 +26,7 @@ const router = new Router({
     { path: '/', component: page('home') },
     { path: '/demo', component: page('demo') },
     { path: '/login', component: page('login') },
-    // { path: '/user/:userId', component: UserInfo },
+    { path: '/register', component: page('register') },
     {
       path: '/admin',
       component: AppLayout,
@@ -44,6 +44,34 @@ const router = new Router({
         // { path: '/model', component: page('Model') },
         // { path: '/components/button', component: page('components/button') },
         // { path: '/components/tabs', component: page('components/tabs') },
+        { name: 404, component: page('404') }
+      ]
+    },
+    {
+      path: '/personalCenter',
+      component: AppLayout,
+      name: 'personalCenter-view',
+      children: [
+        {
+          path: '/',
+          name: 'info',
+          component: page('personalCenter/info')
+        }, // 个人信息
+        {
+          path: '/changePassword',
+          name: 'changePassword',
+          component: page('personalCenter/changePassword')
+        }, // 修改密码
+        {
+          path: '/binding',
+          name: 'binding',
+          component: page('personalCenter/binding')
+        }, // 绑定
+        {
+          path: '/safetyCheck',
+          name: 'safetyCheck',
+          component: page('personalCenter/safetyCheck')
+        }, // 安全验证
         { name: 404, component: page('404') }
       ]
     },
