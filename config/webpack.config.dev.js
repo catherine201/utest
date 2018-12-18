@@ -273,7 +273,7 @@ module.exports = {
               ),
 
               plugins: [
-                // ['import', { libraryName: 'antd', style: 'css' }],
+                ['import', { libraryName: 'antd', style: true }],
                 [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
@@ -408,6 +408,14 @@ module.exports = {
               'less-loader'
             ),
             // include: /node_modules/,
+          },
+          {
+            test: /\.(svg)$/i,
+            loader: 'svg-sprite-loader',
+            include: [
+              require.resolve('antd').replace(/warn\.js$/, ''),  // antd-mobile使用的svg目录
+              path.resolve(__dirname, './src/assets/svg'),  // 个人的svg文件目录，如果自己有svg需要在这里配置
+            ]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.

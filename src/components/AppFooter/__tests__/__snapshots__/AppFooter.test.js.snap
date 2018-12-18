@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`(Component) AppFooter -- snapshot capture snapshot of AppFooter 1`] = `
+<div
+  className="text-center"
+>
+  Make by  
+  <span />
+</div>
+`;
+
+exports[`(Component) Appfooter -- snapshot capture snapshot of Appfooter 1`] = `
+<div
+  className="text-center"
+>
+  Make by  
+  <span />
+</div>
+`;

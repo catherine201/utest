@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu, Icon, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
-import { requestFullScreen, exitFullscreen } from '../utils/index';
+import { requestFullScreen, exitFullscreen } from '../../utils';
 
 const { Header } = Layout;
 

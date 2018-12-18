@@ -3,11 +3,11 @@ import { message, Layout, BackTop, Icon } from 'antd';
 import { Redirect } from 'react-router-dom';
 // import QueueAnim from 'rc-queue-anim'
 // import {TransitionGroup, CSSTransition} from 'react-transition-group'
-import router from '../routes';
-import AppHeader from './AppHeader';
-import AppSider from './AppSider';
-import AppFooter from './AppFooter';
-import PersonAside from './personalCenter/aside';
+import router from '../../routes';
+import AppHeader from '../AppHeader';
+import AppSider from '../AppSider';
+import AppFooter from '../AppFooter';
+import PersonAside from '../personalCenter/aside';
 import './app_lay_out.less';
 
 // const PersonAside = () => import('./personalCenter/aside');

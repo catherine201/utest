@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 
-const logoImg = require('../assets/images/logo.png');
+const logoImg = require('../../assets/images/logo.png');
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
