@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { Icon, Tag } from 'antd';
 
 export default class AppFooter extends React.Component {
   render() {
@@ -7,7 +7,9 @@ export default class AppFooter extends React.Component {
       <div className="text-center">
         <Icon type="cloud" />
         Make by &nbsp;
-        <span>{/* <Tag color="blue">EUEN</Tag> */}</span>
+        <span>
+          <Tag color="blue">EUEN</Tag>
+        </span>
       </div>
     );
   }

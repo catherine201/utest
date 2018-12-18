@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Icon, Dropdown } from 'antd';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { requestFullScreen, exitFullscreen } from '../../utils';
 
 const { Header } = Layout;
@@ -156,9 +156,7 @@ export default class AppHeader extends React.Component {
         </div>
         <div>
           <Menu theme="dark" mode="horizontal">
-            <Menu.Item key="1">
-              <Link to="/">Home</Link>
-            </Menu.Item>
+            <Menu.Item key="1">{/* <Link to="/">Home</Link> */}</Menu.Item>
             {/* <Menu.Item key="8">
               <a
                 href="https://ant.design/docs/react/introduce-cn"

@@ -1,15 +1,13 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-// import Enzyme from 'enzyme';
+// import renderer from 'react-test-renderer';  // 这个不支持antdesign
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import AppFooter from '../index';
-// import Adapter from 'enzyme-adapter-react-16';
 
-// Enzyme.configure({ adapter: new Adapter() });
-describe('(Component) AppFooter -- snapshot', () => {
-  it('capture snapshot of AppFooter', () => {
-    const footer = renderer.create(<AppFooter />).toJSON();
-
-    console.log(footer);
+Enzyme.configure({ adapter: new Adapter() });
+describe('(Component) AppHeader -- snapshot', () => {
+  it('capture snapshot of AppHeader', () => {
+    const footer = shallow(<AppFooter />);
     expect(footer).toMatchSnapshot();
   });
 });
